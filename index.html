@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Form</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+		
+		th, td {
+			text-align: left;
+			padding: 8px;
+			border-bottom: 1px solid #ddd;
+		}
+		
+		tr:hover {
+			background-color:#f5f5f5;
+		}
+		
+		input[type=text] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border: 2px solid #ccc;
+			border-radius: 4px;
+		}
+		
+		input[type=submit] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		
+		input[type=submit]:hover {
+			background-color: #45a049;
+		}
+		
+		.container {
+			border-radius: 5px;
+			background-color: #f2f2f2;
+			padding: 20px;
+		}
+	</style>
+</head>
+<body>
+
+<div class="container">
+	<h2>Student Form</h2>
+	<form>
+		<label for="regno">Registration Number</label>
+		<input type="text" id="regno" name="regno" class="student" placeholder="Enter registration number">
+
+		<label for="name">Name</label>
+		<input type="text" id="name" name="name" class="student" placeholder="Enter name">
+
+		<label for="gender">Gender</label>
+		<select id="gender" name="gender" class="student">
+			<option value="male">Male</option>
+			<option value="female">Female</option>
+			<option value="other">Other</option>
+		</select>
+
+		<label for="address">Address</label>
+		<input type="text" id="address" name="address" class="student" placeholder="Enter address">
+
+		<label for="idnum">Identification Number</label>
+		<input type="text" id="idnum" name="idnum" class="student" placeholder="Enter identification number">
+
+		<input type="submit" value="Submit">
+	</form>
+
+	<h2>Student Data</h2>
+	<p>Enter identification number to search for saved data:</p>
+	<input type="text" id="searchid" name="searchid" placeholder="Enter identification number">
+	<button onclick="searchData()">Search</button>
+
+	<table id="studentTable">
+		<thead>
+			<tr>
+				<th>Registration Number</th>
+				<th>Name</th>
+				<th>Gender</th>
+				<th>Address</th>
+				<th>Identification Number</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+</div>
+
+<script>
+	function searchData() {
+		var searchValue = document.getElementById("searchid").value;
+		var table = document.getElementById("studentTable");
+		for (var i = 1; i < table.rows.length; i++) {
+			var id = table.rows[i].cells[4].innerHTML;
+			if (id === searchValue) {
+				table.rows[i].style.display
